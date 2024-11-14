@@ -23,7 +23,7 @@ pipeline {
             steps {
                 dir('shopping-cart') {
                     sh """
-                        oc patch deployment security-scans \                        
+                        oc patch deployment security-scans \
                         -p '{"spec": {"template": {"metadata": {"labels": {"build": "build-"}}}}}' \
                         -n ${APP_NAMESPACE}
                     """
