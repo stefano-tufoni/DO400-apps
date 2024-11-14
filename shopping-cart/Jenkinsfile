@@ -13,7 +13,7 @@ pipeline {
             steps {
                 dir('shopping-cart') {
                     sh """
-                        oc start-build security-scans 
+                        oc start-build security-scans \
                         --follow --wait -n ${APP_NAMESPACE}
                     """
                 }
