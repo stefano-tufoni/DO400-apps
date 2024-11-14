@@ -1,6 +1,6 @@
 pipeline {
     agent { node { label 'maven' } }
-    environment { APP_NAMESPACE = 'RHT_OCP4_DEV_USER-security-scans' }
+    environment { APP_NAMESPACE = 'yrzkko-security-scans' }
     stages {
         stage('Test') {
             steps {
@@ -13,7 +13,8 @@ pipeline {
             steps {
                 dir('shopping-cart') {
                     sh """
-                        oc start-build security-scans                         --follow --wait -n 
+                        oc start-build security-scans 
+                        --follow --wait -n ${APP_NAMESPACE}
                     """
                 }
             }
@@ -22,7 +23,9 @@ pipeline {
             steps {
                 dir('shopping-cart') {
                     sh """
-                        oc patch deployment security-scans                         -p '{"spec": {"template": {"metadata": {"labels": {"build": "build-"}}}}}'                         -n 
+                        oc patch deployment security-scans                         
+                        -p '{"spec": {"template": {"metadata": {"labels": {"build": "build-"}}}}}'
+                        -n ${APP_NAMESPACE}
                     """
                 }
             }
