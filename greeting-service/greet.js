@@ -1,3 +1,3 @@
 module.exports = function greet(name) {
-    return ;
+    return 'Hello ${name || "guest"} from version 2!';
 }
