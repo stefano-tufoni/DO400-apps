@@ -7,7 +7,6 @@ public class CartView {
 
     public ArrayList<CartItem> products;
     public int totalItems;
-    public Timestamp snapshot;
 
     public CartView() {
     }
